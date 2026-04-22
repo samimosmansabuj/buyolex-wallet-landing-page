@@ -1,0 +1,68 @@
+    body {
+        font-family: 'Hind Siliguri', sans-serif;
+        /* ব্যাকগ্রাউন্ড গ্রাফিতি/প্যাটার্ন যা গ্লাস ইফেক্ট ফুটিয়ে তুলবে */
+        background-color: #e0f7fa;
+        background-image:
+            radial-gradient(at 0% 0%, hsla(185, 100%, 80%, 1) 0, transparent 50%),
+            radial-gradient(at 50% 0%, hsla(170, 100%, 70%, 1) 0, transparent 50%),
+            radial-gradient(at 100% 0%, hsla(190, 100%, 80%, 1) 0, transparent 50%),
+            url("https://www.transparenttextures.com/patterns/cubes.png");
+        background-attachment: fixed;
+    }
+
+    .glass {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .brand-color {
+        color: #00838f;
+    }
+
+    .brand-bg {
+        background-color: #00838f;
+    }
+
+    /* মিনিমাল স্পেসিং */
+    .section-padding {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    /* ইমেজ সাইজ কন্ট্রোল */
+    .hero-img {
+        width: 100%;
+        max-height: 350px;
+        object-fit: cover;
+        border-radius: 1.5rem;
+    }
+
+    .modal-bg {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(8px);
+    }
+
+    /* কাস্টম অ্যানিমেশন */
+    @keyframes slideUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .animate-slide-up {
+        animation: slideUp 0.4s ease-out forwards;
+    }
+
+    #successPopup {
+        background: rgba(0,0,0,0.6);
+        backdrop-filter: blur(6px);
+    }

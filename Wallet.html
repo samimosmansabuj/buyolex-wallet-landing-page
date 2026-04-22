@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyolex Leather | প্রিমিয়াম লেদার ওয়ালেট</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body class="text-gray-800">
+
+    <!-- ১. টপ অর্ডার বার (Sticky Top) -->
+<div class="fixed top-0 left-0 w-full z-50 glass px-4 py-2 flex justify-between items-center border-b border-white/50">
+    
+    <div class="flex flex-col justify-center leading-tight">
+        <span class="text-[15px] md:text-sm font-medium text-gray-500">
+            অফার প্রাইস:
+        </span>
+    
+        <span id="topPrice" class="text-[25px] md:text-xl font-bold brand-color">
+            Loading...
+        </span>
+    </div>
+
+    <button onclick="openModal()" class="brand-bg text-white px-4 py-1.5 rounded-full font-bold text-[20px] md:text-sm hover:bg-cyan-800 transition-all shadow-md w-auto">
+        Buy Now <i class="fas fa-shopping-cart ml-1"></i>
+    </button>
+
+</div>
+    <!-- মেইন কন্টেন্ট (টপ বারের জন্য প্যাডিং) -->
+    <div class="pt-20">
+
+        <!-- ২. হিরো সেকশন -->
+        <section class="px-6 section-padding max-w-4xl mx-auto text-center">
+            <div class="mb-6 overflow-hidden shadow-xl">
+                <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80"
+                    alt="Buyolex Wallet" class="hero-img">
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+                স্টাইল এবং কমফোর্ট <br><span class="brand-color">Buyolex Leather Wallet</span>
+            </h1>
+            <p class="text-base text-gray-600 mb-6 max-w-lg mx-auto">
+                ১০০% জেনুইন লেদার, যারা মিনিমাল একটি ওয়ালেট ক্যারি করতে চান, ক্যাশ এবং কার্ড থাকবে নিরাপদ, আপনাকে দেখাবে
+                আরো স্টাইলিশ।
+            </p>
+            <button onclick="openModal()"
+                class="brand-bg text-white px-4 py-1.5 rounded-full font-bold text-[20px] md:text-sm hover:bg-cyan-800 transition-all shadow-md w-auto">
+                Buy Now<i class="fas fa-shopping-cart ml-1"></i>
+        </section>
+
+        <!-- ৩. ফিচার সেকশন (মিনিমাল গ্যাপ) -->
+        <section class="px-6 pt-4 pb-10 max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+            <div class="glass p-6 rounded-3xl space-y-4">
+                <h2 class="text-2xl font-bold brand-color mb-2">কেন এটি কেনা উচিত?</h2>
+                <div class="flex gap-3 items-start">
+                    <div class="brand-bg text-white p-2 rounded-lg text-xs"><i class="fas fa-check"></i></div>
+                    <p class="text-sm"><span class="font-bold">জেনুইন লেদার:</span> প্রিমিয়াম কোয়ালিটি চামড়া যা
+                        দীর্ঘস্থায়ী।</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                    <div class="brand-bg text-white p-2 rounded-lg text-xs"><i class="fas fa-layer-group"></i></div>
+                    <p class="text-sm"><span class="font-bold">স্মার্ট স্লট:</span> ১টি ক্যাশ এবং ২টি কার্ড স্লট।</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                    <div class="brand-bg text-white p-2 rounded-lg text-xs"><i class="fa-solid fa-cube"></i></div>
+                    <p class="text-sm"><span class="font-bold">স্লিম লুক:</span> পকেটে কোনো বাড়তি চাপ দেয় না। গুড লুকিং
+                        এবং কমফোর্টেবল।</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                    <div class="brand-bg text-white p-2 rounded-lg text-xs"><i class="fa-solid fa-grip-vertical"></i>
+                    </div>
+                    <p class="text-sm"><span class="font-bold">ক্যাজুয়াল আউটিং:</span> বিকেলে বন্ধুদের সাথে আড্ডা বা
+                        ছোটখাটো কেনাকাটায় ভারী মানিব্যাগ বয়ে বেড়ানোর ঝামেলা আর নয়।</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                    <div class="brand-bg text-white p-2 rounded-lg text-xs"><i class="fa-solid fa-wand-magic"></i></div>
+                    <p class="text-sm"><span class="font-bold">স্মার্ট লুক:</span> পকেটে একদম মিশে থাকে, তাই আপনার ফিটিং
+                        প্যান্টের লুক নষ্ট হবে না এবং আপনাকে দেখাবে আরও স্মার্ট।</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                    <div class="brand-bg text-white p-2 rounded-lg text-xs"><i class="fa-solid fa-bolt"></i></div>
+                    <p class="text-sm"><span class="font-bold">নিরাপদ ও সহজ:</span> সামনে পকেটে রাখা যায় বলে এটি অধিক
+                        নিরাপদ এবং খুব দ্রুত কার্ড বা ক্যাশ বের করা সম্ভব।</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                    <div class="brand-bg text-white p-2 rounded-lg text-xs"><i class="fa-solid fa-anchor"></i></div>
+                    <p class="text-sm"><span class="font-bold">শৌখিন পছন্দ:</span> এটি কেবল একটি ওয়ালেট নয়, বরং আপনার
+                        রুচি এবং আভিজাত্যের বহিঃপ্রকাশ।</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                    <div class="brand-bg text-white p-2 rounded-lg text-xs"><i class="fa-brands fa-bitcoin"></i></i>
+                    </div>
+                    <p class="text-sm"><span class="font-bold">লাইফস্টাইল:</span> ভারী মানিব্যাগের দিন শেষ, এবার আনুন
+                        স্মার্ট ও স্লিম লাইফস্টাইল।</p>
+                </div>
+
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&q=80"
+                    class="rounded-2xl shadow-md h-40 w-full object-cover" alt="Detail 1">
+                <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=400&q=80"
+                    class="rounded-2xl shadow-md h-40 w-full object-cover mt-4" alt="Detail 2">
+            </div>
+        </section>
+
+        <!-- ৪. রিভিউ সেকশন (স্প্যান/অ্যাকর্ডিয়ান) -->
+        <section class="px-6 section-padding max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold text-center mb-6">কাস্টমার রিভিউ</h2>
+            <div class="space-y-3">
+                <details class="glass p-4 rounded-2xl cursor-pointer group">
+                    <summary class="font-bold text-sm flex justify-between items-center list-none">
+                        <span class="flex items-center gap-2"><i class="fas fa-user brand-color"></i> শামীম আহমেদ</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition text-xs"></i>
+                    </summary>
+                    <p class="mt-3 text-xs text-gray-600 border-t pt-2 italic">"চামড়ার ফিনিশিং অসাধারণ। ছোট সাইজ হওয়ায়
+                        পকেটে খুব কমফোর্টেবল।"</p>
+                </details>
+                <details class="glass p-4 rounded-2xl cursor-pointer group">
+                    <summary class="font-bold text-sm flex justify-between items-center list-none">
+                        <span class="flex items-center gap-2"><i class="fas fa-user brand-color"></i> তানভীর
+                            হাসান</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition text-xs"></i>
+                    </summary>
+                    <p class="mt-3 text-xs text-gray-600 border-t pt-2 italic">"প্রাইজের তুলনায় কোয়ালিটি অনেক বেশি।
+                        ডেলিভারিও খুব দ্রুত পেয়েছি।"</p>
+                </details>
+                <details class="glass p-4 rounded-2xl cursor-pointer group">
+                    <summary class="font-bold text-sm flex justify-between items-center list-none">
+                        <span class="flex items-center gap-2"><i class="fas fa-user brand-color"></i> সুরভি</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition text-xs"></i>
+                    </summary>
+                    <p class="mt-3 text-xs text-gray-600 border-t pt-2 italic">"বয়ফ্রেন্ড এর জন্য নিয়েছি, এত পছন্দ করেছে
+                        যে বলার বাহিরে, কিছুদিন ধরে শুধু আমাকে এইটার জন্য ঘুরতে নিয়ে যাচ্ছে😍"</p>
+                </details>
+                <details class="glass p-4 rounded-2xl cursor-pointer group">
+                    <summary class="font-bold text-sm flex justify-between items-center list-none">
+                        <span class="flex items-center gap-2"><i class="fas fa-user brand-color"></i> মোঃ আরিফ</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition text-xs"></i>
+                    </summary>
+                    <p class="mt-3 text-xs text-gray-600 border-t pt-2 italic">"দ্রুতই পেয়েছি, খুব সেফটি মেইনটেইন করে
+                        দেওয়া হয়েছে, সত্যি বলতে আমার সব ওয়ালেটের চেয়ে এইটা বেশি পছন্দ।"</p>
+                </details>
+                <details class="glass p-4 rounded-2xl cursor-pointer group">
+                    <summary class="font-bold text-sm flex justify-between items-center list-none">
+                        <span class="flex items-center gap-2"><i class="fas fa-user brand-color"></i> শেখ সাফিন</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition text-xs"></i>
+                    </summary>
+                    <p class="mt-3 text-xs text-gray-600 border-t pt-2 italic">"চাকরি থেকে এসে, এটা নিয়ে জিমে যাই,
+                        বন্ধুদের সাথে আড্ডা দেই, খাওয়া দাওয়া সব মিলিয়ে এই ওয়ালেটের পেজেন্স খুব জোস একটু আলাদা ফিল করায়।"
+                    </p>
+                </details>
+                <details class="glass p-4 rounded-2xl cursor-pointer group">
+                    <summary class="font-bold text-sm flex justify-between items-center list-none">
+                        <span class="flex items-center gap-2"><i class="fas fa-user brand-color"></i> আবির খান</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition text-xs"></i>
+                    </summary>
+                    <p class="mt-3 text-xs text-gray-600 border-t pt-2 italic">"সত্যি বলতে অমাইক একটা ব্যাপার-স্যাপার
+                        আছে, স্টাইলের সাথে জোস মানায়, আমার বেশি ভালো লাগে ফোনের সাথে হাতে নিয়ে ঘুরতে।"</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- ৫. FAQ সেকশন -->
+        <section class="px-6 section-padding max-w-2xl mx-auto">
+            <h2 class="text-2xl font-bold text-center mb-6">সাধারণ প্রশ্নাবলী</h2>
+            <div class="space-y-3">
+                <details class="glass p-4 rounded-2xl cursor-pointer group">
+                    <summary class="font-bold text-sm flex justify-between items-center list-none">
+                        ডেলিভারি চার্জ কত?
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition text-xs"></i>
+                    </summary>
+                    <p class="mt-3 text-xs text-gray-600 border-t pt-2">ঢাকা ভিতরে ৮০৳ এবং ঢাকার বাইরে ১২০৳।</p>
+                </details>
+                <details class="glass p-4 rounded-2xl cursor-pointer group">
+                    <summary class="font-bold text-sm flex justify-between items-center list-none">
+                        পণ্য হাতে পেয়ে চেক করা যাবে?
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition text-xs"></i>
+                    </summary>
+                    <p class="mt-3 text-xs text-gray-600 border-t pt-2">হ্যাঁ, পণ্য হাতে পেয়ে চেক করে টাকা পেমেন্ট করতে
+                        পারবেন।</p>
+                </details>
+                <details class="glass p-4 rounded-2xl cursor-pointer group">
+                    <summary class="font-bold text-sm flex justify-between items-center list-none">
+                        কত টাকার ক্যাশ ক্যারি করা যাবে?
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition text-xs"></i>
+                    </summary>
+                    <p class="mt-3 text-xs text-gray-600 border-t pt-2">১০০০ টাকা নোট হলে ২০ হাজার+ পর্যন্ত ক্যারি করা
+                        যাবে।</p>
+                </details>
+                <details class="glass p-4 rounded-2xl cursor-pointer group">
+                    <summary class="font-bold text-sm flex justify-between items-center list-none">
+                        কয়টা কার্ড রাখা যাবে?
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition text-xs"></i>
+                    </summary>
+                    <p class="mt-3 text-xs text-gray-600 border-t pt-2">দুইটা কার্ড স্লট আছে, ২-৬ পর্যন্ত কার্ড ক্যারি
+                        করা যাবে। </p>
+                </details>
+                <details class="glass p-4 rounded-2xl cursor-pointer group">
+                    <summary class="font-bold text-sm flex justify-between items-center list-none">
+                        জেনুইন লেদার?
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition text-xs"></i>
+                    </summary>
+                    <p class="mt-3 text-xs text-gray-600 border-t pt-2">সম্পূর্ণ জেনুইন লেদার।</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- ৬. ব্র্যান্ডিং বার (Bottom) -->
+        <footer class="px-6 py-8 glass mt-10 text-center border-t border-white/50">
+            <div class="text-xl font-bold tracking-wider brand-color flex justify-center items-center gap-2">
+                <i class="fas fa-shield-alt"></i> BUYOLEX <span class="text-gray-700">LEATHER</span>
+            </div>
+            <p class="text-[10px] text-gray-500 mt-2">© ২০২৪ Buyolex Leather. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <!-- ৭. অর্ডার মোডাল (Advanced Form) -->
+    <div id="orderModal" class="fixed inset-0 z-[100] hidden modal-bg flex justify-center items-center px-6">
+        <div class="bg-white w-full max-w-md rounded-3xl p-6 relative animate-slide-up shadow-2xl">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+            <h3 class="text-xl font-bold brand-color mb-4 text-center">অর্ডার কনফার্ম করুন</h3>
+
+            <form class="space-y-4">
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <label class="text-xs font-bold mb-1 block">আপনার নাম</label>
+                        <input type="text" required placeholder="নাম লিখুন"
+                            class="w-full p-3 border rounded-xl outline-none focus:border-cyan-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold mb-1 block">মোবাইল নাম্বার</label>
+                        <input id="phone" type="text" required placeholder="০১৭XXXXXXXX"
+                            class="w-full p-3 border rounded-xl outline-none focus:border-cyan-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold mb-1 block">ঠিকানা</label>
+                        <textarea required placeholder="পূর্ণ ঠিকানা লিখুন"
+                            class="w-full p-3 border rounded-xl outline-none focus:border-cyan-500 text-sm"
+                            rows="2"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs font-bold mb-1 block">জেলা</label>
+                            <select id="city" class="w-full p-3 border rounded-xl outline-none text-sm">
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold mb-1 block">পরিমাণ</label>
+                            <div class="flex items-center border rounded-xl overflow-hidden">
+                                <button type="button" onclick="changeQty(-1)"
+                                    class="px-3 py-2 bg-gray-100 hover:bg-gray-200 font-bold">-</button>
+                                <input type="text" id="qty" value="1" readonly
+                                    class="w-full text-center text-sm outline-none">
+                                <button type="button" onclick="changeQty(1)"
+                                    class="px-3 py-2 bg-gray-100 hover:bg-gray-200 font-bold">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- সামারি সেকশন -->
+                <div class="bg-gray-50 p-4 rounded-2xl border border-dashed border-gray-300 space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span>প্রোডাক্ট মূল্য (<span id="sumQty">১</span>টি):</span>
+                        <span id="prodTotal">০৳</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span>ডেলিভারি চার্জ:</span>
+                        <span id="delCharge">০৳</span>
+                    </div>
+                    <div class="flex justify-between font-bold text-lg border-t pt-2 brand-color">
+                        <span>মোট payable:</span>
+                        <span id="grandTotal">০৳</span>
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="w-full brand-bg text-white py-4 rounded-xl font-bold text-lg hover:bg-cyan-800 transition shadow-lg">
+                    অর্ডার কনফার্ম করুন <i class="fas fa-check-circle ml-1"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SUCCESS POPUP -->
+    <div id="successPopup" class="fixed inset-0 z-[200] hidden flex items-center justify-center">
+        <div class="bg-white rounded-2xl shadow-2xl p-6 text-center w-[90%] max-w-sm animate-slide-up relative">
+
+            <div class="text-green-500 text-5xl mb-3">
+                <i class="fas fa-check-circle"></i>
+            </div>
+
+            <h2 class="text-xl font-bold brand-color">অর্ডার সফল হয়েছে!</h2>
+            <p class="text-sm text-gray-600 mt-2">
+                আপনাকে রিডাইরেক্ট করা হচ্ছে <span id="countdown">5</span> সেকেন্ডে...
+            </p>
+
+            <div class="mt-4 text-xs text-gray-400">
+                অনুগ্রহ করে অপেক্ষা করুন
+            </div>
+        </div>
+    </div>
+
+    <!-- ৮. ফ্লোটিং হোয়াটসঅ্যাপ বাটন -->
+    <a href="https://wa.me/YOUR_NUMBER" target="_blank"
+        class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex justify-center items-center text-3xl shadow-2xl hover:bg-green-600 transition-all transform hover:scale-110 z-50 animate-bounce">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
