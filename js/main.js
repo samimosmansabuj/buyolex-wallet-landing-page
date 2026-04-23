@@ -24,6 +24,14 @@ function isValidBDPhone(phone) {
     );
 }
 
+// ================= NORMALIZE PHONE =================
+function normalizePhone(phone) {
+    phone = phone.replace(/\s+/g, "");
+    if (phone.startsWith("+880")) return phone.replace("+880", "0");
+    if (phone.startsWith("880")) return phone.replace("880", "0");
+    return phone;
+}
+
 // ================= MODAL =================
 function openModal() {
     document.getElementById("orderModal").classList.remove("hidden");
@@ -45,7 +53,10 @@ function loadDistricts() {
             if (data.status === 200 && data.success) {
                 data.data.forEach(district => {
                     const option = document.createElement("option");
-                    option.value = district.name.toLowerCase();
+
+                    // 🔥 safer value
+                    option.value = district.name.toLowerCase().replace(" district", "").trim();
+
                     option.textContent = district.bn_name;
                     districtSelect.appendChild(option);
                 });
@@ -56,6 +67,9 @@ function loadDistricts() {
 // ================= DELIVERY =================
 function getDeliveryCharge(district) {
     if (!district) return 0;
+
+    district = district.toLowerCase().replace(" district", "").trim();
+
     return district === "dhaka" ? 80 : 120;
 }
 
@@ -116,7 +130,7 @@ async function loadProductByCode() {
         const price = parseFloat(product.price) || 0;
         const discount = parseFloat(product.discount_price) || 0;
 
-        PRODUCT.id = product.id;
+        PRODUCT.id = Number(product.id);
         PRODUCT.price = price;
         PRODUCT.discount_price = discount;
         PRODUCT.title = product.title;
@@ -124,7 +138,6 @@ async function loadProductByCode() {
 
         const finalPrice = discount > 0 ? discount : price;
 
-        // ================= TOP PRICE UI =================
         const topPrice = document.getElementById("topPrice");
 
         if (topPrice) {
@@ -138,7 +151,6 @@ async function loadProductByCode() {
             `;
         }
 
-        // ================= HERO IMAGE =================
         const heroImg = document.querySelector(".hero-img");
         if (heroImg && product.images?.length) {
             heroImg.src = product.images[0];
@@ -147,6 +159,9 @@ async function loadProductByCode() {
         document.title = product.title + " | Buyolex";
 
         calculateTotal();
+
+        // 🔥 ensure UI update after load
+        setTimeout(() => calculateTotal(), 300);
 
     } catch (err) {
         console.log("Product load error:", err);
@@ -158,38 +173,55 @@ document.addEventListener("DOMContentLoaded", () => {
     loadDistricts();
     loadProductByCode();
 
+    const citySelect = document.getElementById("city");
+    if (citySelect) {
+        citySelect.addEventListener("change", calculateTotal);
+    }
+
     const form = document.querySelector("#orderModal form");
 
     if (form) {
+
+        let isSubmitting = false; // 🔥 prevent double order
+
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
+
+            if (isSubmitting) return;
 
             if (!PRODUCT.loaded || !PRODUCT.id) {
                 alert("Product load হয়নি");
                 return;
             }
 
-            const name = document.querySelector("#orderModal input[type='text']");
+            const name = document.getElementById("name");
             const phone = document.getElementById("phone");
             const address = document.querySelector("#orderModal textarea");
             const city = document.getElementById("city");
+            const qty = parseInt(document.getElementById("qty").value) || 1;
 
             if (!name.value.trim()) return alert("নাম দিন");
             if (!isValidBDPhone(phone.value)) return alert("সঠিক নাম্বার দিন");
             if (!address.value.trim()) return alert("ঠিকানা দিন");
             if (!city.value) return alert("জেলা দিন");
 
+            const normalizedPhone = normalizePhone(phone.value);
+            const deliveryCharge = getDeliveryCharge(city.value);
+
+            isSubmitting = true;
+
             try {
                 const res = await fetch("http://127.0.0.1:8000/api/order/", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        product_id: PRODUCT.id,
-                        name: name.value,
-                        phone: phone.value,
-                        qty: parseInt(document.getElementById("qty").value),
-                        delivery_charge: getDeliveryCharge(city.value),
-                        notes: address.value
+                        product_id: Number(PRODUCT.id),
+                        name: name.value.trim(),
+                        phone: normalizedPhone,
+                        qty: Number(qty),
+                        delivery_charge: Number(deliveryCharge),
+                        district: city.value,
+                        address: address.value.trim()
                     })
                 });
 
@@ -214,11 +246,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 } else {
                     alert(data.message || "Order failed");
+                    isSubmitting = false;
                 }
 
             } catch (err) {
                 console.log(err);
                 alert("Order failed");
+                isSubmitting = false;
             }
         });
     }
