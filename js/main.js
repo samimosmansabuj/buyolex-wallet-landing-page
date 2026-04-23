@@ -7,13 +7,6 @@ let PRODUCT = {
     loaded: false
 };
 
-// ================= LANDING CODE =================
-function getLandingCode() {
-    const urlParams = new URLSearchParams(window.location.search);
-    // return urlParams.get("code");
-    return 1010;
-}
-
 // ================= PHONE VALIDATION =================
 function isValidBDPhone(phone) {
     phone = phone.replace(/\s+/g, "");
@@ -104,15 +97,8 @@ function calculateTotal() {
 
 // ================= LOAD PRODUCT =================
 async function loadProductByCode() {
-    const code = getLandingCode();
-
-    if (!code) {
-        console.error("Landing code missing");
-        return;
-    }
-
     try {
-        const res = await fetch(`http://127.0.0.1:8000/api/product/?code=${code}`);
+        const res = await fetch(`${ENV.API_BASE_URL}/api/product/?code=${ENV.PRODUCT_LANDING_PAGE_ID}`);
         const data = await res.json();
 
         if (!data.success) {
@@ -201,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
             isSubmitting = true;
 
             try {
-                const res = await fetch("http://127.0.0.1:8000/api/order-create/", {
+                const res = await fetch(`${ENV.API_BASE_URL}/api/order-create/`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
