@@ -10,13 +10,13 @@ let PRODUCT = {
 // ================= LANDING CODE =================
 function getLandingCode() {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get("code");
+    // return urlParams.get("code");
+    return 1010;
 }
 
 // ================= PHONE VALIDATION =================
 function isValidBDPhone(phone) {
     phone = phone.replace(/\s+/g, "");
-
     return (
         (phone.startsWith("+8801") && phone.length === 14) ||
         (phone.startsWith("8801") && phone.length === 13) ||
@@ -44,9 +44,7 @@ function closeModal() {
 // ================= DISTRICT LOAD =================
 function loadDistricts() {
     const districtSelect = document.getElementById("city");
-
     districtSelect.innerHTML = `<option value="">জেলা সিলেক্ট করুন</option>`;
-
     fetch("https://bdapi.vercel.app/api/v.1/district")
         .then(res => res.json())
         .then(data => {
@@ -67,9 +65,7 @@ function loadDistricts() {
 // ================= DELIVERY =================
 function getDeliveryCharge(district) {
     if (!district) return 0;
-
     district = district.toLowerCase().replace(" district", "").trim();
-
     return district === "dhaka" ? 80 : 120;
 }
 
@@ -77,7 +73,6 @@ function getDeliveryCharge(district) {
 function changeQty(val) {
     let qtyInput = document.getElementById("qty");
     let newQty = parseInt(qtyInput.value) + val;
-
     if (newQty >= 1) {
         qtyInput.value = newQty;
         calculateTotal();
@@ -160,9 +155,7 @@ async function loadProductByCode() {
 
         calculateTotal();
 
-        // 🔥 ensure UI update after load
         setTimeout(() => calculateTotal(), 300);
-
     } catch (err) {
         console.log("Product load error:", err);
     }
@@ -179,11 +172,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const form = document.querySelector("#orderModal form");
-
     if (form) {
-
-        let isSubmitting = false; // 🔥 prevent double order
-
+        let isSubmitting = false;
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
 
@@ -211,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
             isSubmitting = true;
 
             try {
-                const res = await fetch("http://127.0.0.1:8000/api/order/", {
+                const res = await fetch("http://127.0.0.1:8000/api/order-create/", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
