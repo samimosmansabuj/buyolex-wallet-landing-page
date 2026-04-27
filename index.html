@@ -12,6 +12,27 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '26149801807972053');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=26149801807972053&ev=PageView&noscript=1" />
+    </noscript>
+
 </head>
 
 <body class="text-gray-800">
@@ -212,7 +233,7 @@
             </div>
         </section>
 
-        <!-- ৬. ব্র্যান্ডিং বার (Bottom) -->
+        
         <footer class="px-6 py-8 glass mt-10 text-center border-t border-white/50">
             <div class="text-xl font-bold tracking-wider brand-color flex justify-center items-center gap-2">
                 <i class="fas fa-shield-alt"></i> BUYOLEX <span class="text-gray-700">LEATHER</span>
@@ -221,73 +242,75 @@
         </footer>
     </div>
 
-    <!-- ৭. অর্ডার মোডাল (Advanced Form) -->
-    <div id="orderModal" class="fixed inset-0 z-[100] hidden modal-bg flex justify-center items-center px-6">
-        <div class="bg-white w-full max-w-md rounded-3xl p-6 relative animate-slide-up shadow-2xl">
-            <button onclick="closeModal()"
-                class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
-            <h3 class="text-xl font-bold brand-color mb-4 text-center">অর্ডার কনফার্ম করুন</h3>
+    
+    <div id="orderModal" class="fixed inset-0 z-[100] hidden modal-bg flex justify-center items-center px-6 py-6">
+        <div class="bg-cyan-100 p-[2px] rounded-3xl">
+            <div class="bg-white w-full max-w-md rounded-3xl p-4 relative animate-slide-up shadow-2xl max-h-[85vh] overflow-y-auto border border-cyan-300">
+                <button onclick="closeModal()"
+                    class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+                <h3 class="text-xl font-bold brand-color mb-4 text-center">অর্ডার কনফার্ম করুন</h3>
 
-            <form class="space-y-4">
-                <div class="grid grid-cols-1 gap-4">
-                    <div>
-                        <label class="text-xs font-bold mb-1 block">আপনার নাম</label>
-                        <input id="name" type="text" required placeholder="নাম লিখুন"
-                            class="w-full p-3 border rounded-xl outline-none focus:border-cyan-500 text-sm">
-                    </div>
-                    <div>
-                        <label class="text-xs font-bold mb-1 block">মোবাইল নাম্বার</label>
-                        <input id="phone" type="text" required placeholder="০১৭XXXXXXXX"
-                            class="w-full p-3 border rounded-xl outline-none focus:border-cyan-500 text-sm">
-                    </div>
-                    <div>
-                        <label class="text-xs font-bold mb-1 block">ঠিকানা</label>
-                        <textarea required placeholder="পূর্ণ ঠিকানা লিখুন"
-                            class="w-full p-3 border rounded-xl outline-none focus:border-cyan-500 text-sm"
-                            rows="2"></textarea>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
+                <form class="space-y-4">
+                    <div class="grid grid-cols-1 gap-4">
                         <div>
-                            <label class="text-xs font-bold mb-1 block">জেলা</label>
-                            <select id="city" class="w-full p-3 border rounded-xl outline-none text-sm">
-                            </select>
+                            <label class="text-xs font-bold mb-1 block">আপনার নাম</label>
+                            <input id="name" type="text" required placeholder="নাম লিখুন"
+                                class="w-full p-3 border rounded-xl outline-none focus:border-cyan-500 text-sm">
                         </div>
                         <div>
-                            <label class="text-xs font-bold mb-1 block">পরিমাণ</label>
-                            <div class="flex items-center border rounded-xl overflow-hidden">
-                                <button type="button" onclick="changeQty(-1)"
-                                    class="px-3 py-2 bg-gray-100 hover:bg-gray-200 font-bold">-</button>
-                                <input type="text" id="qty" value="1" readonly
-                                    class="w-full text-center text-sm outline-none">
-                                <button type="button" onclick="changeQty(1)"
-                                    class="px-3 py-2 bg-gray-100 hover:bg-gray-200 font-bold">+</button>
+                            <label class="text-xs font-bold mb-1 block">মোবাইল নাম্বার</label>
+                            <input id="phone" type="text" required placeholder="০১৭XXXXXXXX"
+                                class="w-full p-3 border rounded-xl outline-none focus:border-cyan-500 text-sm">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold mb-1 block">ঠিকানা</label>
+                            <textarea required placeholder="পূর্ণ ঠিকানা লিখুন"
+                                class="w-full p-3 border rounded-xl outline-none focus:border-cyan-500 text-sm"
+                                rows="2"></textarea>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-xs font-bold mb-1 block">জেলা</label>
+                                <select id="city" class="w-full p-3 border rounded-xl outline-none text-sm">
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold mb-1 block">পরিমাণ</label>
+                                <div class="flex items-center border rounded-xl overflow-hidden">
+                                    <button type="button" onclick="changeQty(-1)"
+                                        class="px-3 py-2 bg-gray-100 hover:bg-gray-200 font-bold">-</button>
+                                    <input type="text" id="qty" value="1" readonly
+                                        class="w-full text-center text-sm outline-none">
+                                    <button type="button" onclick="changeQty(1)"
+                                        class="px-3 py-2 bg-gray-100 hover:bg-gray-200 font-bold">+</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- সামারি সেকশন -->
-                <div class="bg-gray-50 p-4 rounded-2xl border border-dashed border-gray-300 space-y-2">
-                    <div class="flex justify-between text-sm">
-                        <span>প্রোডাক্ট মূল্য (<span id="sumQty">১</span>টি):</span>
-                        <span id="prodTotal">০৳</span>
+                    <!-- সামারি সেকশন -->
+                    <div class="bg-gray-50 p-4 rounded-2xl border border-dashed border-gray-300 space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span>প্রোডাক্ট মূল্য (<span id="sumQty">১</span>টি):</span>
+                            <span id="prodTotal">০৳</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>ডেলিভারি চার্জ:</span>
+                            <span id="delCharge">০৳</span>
+                        </div>
+                        <div class="flex justify-between font-bold text-lg border-t pt-2 brand-color">
+                            <span>মোট payable:</span>
+                            <span id="grandTotal">০৳</span>
+                        </div>
                     </div>
-                    <div class="flex justify-between text-sm">
-                        <span>ডেলিভারি চার্জ:</span>
-                        <span id="delCharge">০৳</span>
-                    </div>
-                    <div class="flex justify-between font-bold text-lg border-t pt-2 brand-color">
-                        <span>মোট payable:</span>
-                        <span id="grandTotal">০৳</span>
-                    </div>
-                </div>
 
-                <button type="submit"
-                    class="w-full brand-bg text-white py-4 rounded-xl font-bold text-lg hover:bg-cyan-800 transition shadow-lg">
-                    অর্ডার কনফার্ম করুন <i class="fas fa-check-circle ml-1"></i>
-                </button>
-            </form>
+                    <button type="submit"
+                        class="w-full brand-bg text-white py-4 rounded-xl font-bold text-lg hover:bg-cyan-800 transition shadow-lg">
+                        অর্ডার কনফার্ম করুন <i class="fas fa-check-circle ml-1"></i>
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -311,15 +334,15 @@
     </div>
 
     <!-- ৮. ফ্লোটিং হোয়াটসঅ্যাপ বাটন -->
-    <a href="https://wa.me/YOUR_NUMBER" target="_blank"
+    <a href="https://wa.me/8801705249285" target="_blank"
         class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex justify-center items-center text-3xl shadow-2xl hover:bg-green-600 transition-all transform hover:scale-110 z-50 animate-bounce">
         <i class="fab fa-whatsapp"></i>
     </a>
 
 
 
-    <script src="js/main.js?v=3"></script>
     <script src="env.js?v=3"></script>
+    <script src="js/main.js?v=3"></script>
 </body>
 
 </html>
