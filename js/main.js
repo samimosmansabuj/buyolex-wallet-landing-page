@@ -28,6 +28,7 @@ function normalizePhone(phone) {
 // ================= MODAL =================
 function openModal() {
     document.getElementById("orderModal").classList.remove("hidden");
+    FacebookAddToCartEvent(PRODUCT.id, PRODUCT.title, PRODUCT.discount_price > 0 ? PRODUCT.discount_price : PRODUCT.price);
 }
 
 function closeModal() {
@@ -96,6 +97,35 @@ function calculateTotal() {
 }
 
 // ================= LOAD PRODUCT =================
+function showProductError() {
+    if (document.getElementById("productError")) return;
+    document.body.innerHTML = "";
+    const div = document.createElement("div");
+    div.id = "productError";
+    div.className = "product-error";
+
+    div.innerHTML = `
+        <div class="error-box">
+            <div class="spinner-ring"></div>
+            <h2>Loading product</h2>
+            <p>We are connecting to server...</p>
+            <div class="sub-text">
+                Retrying automatically...
+            </div>
+        </div>
+    `;
+    document.body.appendChild(div);
+}
+
+function showProductFound() {
+    const pageContent = document.getElementById("page-content");
+    pageContent.classList.remove("hidden");
+    const errorDiv = document.getElementById("productError");
+    if (errorDiv) {
+        errorDiv.remove();
+    }
+}
+
 async function loadProductByCode() {
     try {
         const res = await fetch(`${ENV.API_BASE_URL}/api/product/?code=${ENV.PRODUCT_LANDING_PAGE_ID}`);
@@ -103,10 +133,12 @@ async function loadProductByCode() {
 
         if (!data.success) {
             console.error(data.message);
+            showProductError();
             return;
         }
 
         const product = data.product;
+        FacebookViewContentEvent(product.title, product.price, product.id);
 
         const price = parseFloat(product.price) || 0;
         const discount = parseFloat(product.discount_price) || 0;
@@ -116,6 +148,8 @@ async function loadProductByCode() {
         PRODUCT.discount_price = discount;
         PRODUCT.title = product.title;
         PRODUCT.loaded = true;
+
+        showProductFound();
 
         const finalPrice = discount > 0 ? discount : price;
 
@@ -144,10 +178,38 @@ async function loadProductByCode() {
         setTimeout(() => calculateTotal(), 300);
     } catch (err) {
         console.log("Product load error:", err);
+        showProductError();
     }
 }
 
 // ================= FORM SUBMIT =================
+function getProudctCartQuantity() {
+    const qtyInput = document.getElementById("qty");
+    return Number(qtyInput.value) || 1;
+}
+
+function getTotalAmount(){
+    const city = document.getElementById("city");
+    const price = PRODUCT.discount_price > 0 ? PRODUCT.discount_price : PRODUCT.price;
+
+    const deliveryCharge = getDeliveryCharge(city.value);
+    const qty = getProudctCartQuantity();
+    const productTotal = qty * price;
+    return productTotal + deliveryCharge
+}
+
+function getProductJsonForEventSend(){
+    const qtyInput = getProudctCartQuantity();
+    const contents = [];
+    contents.push({
+        id: PRODUCT.id,
+        name: PRODUCT.title,
+        quantity: qtyInput,
+        price: PRODUCT.discount_price > 0 ? PRODUCT.discount_price : PRODUCT.price,
+    });
+    return contents;
+};
+
 document.addEventListener("DOMContentLoaded", () => {
     loadDistricts();
     loadProductByCode();
@@ -162,9 +224,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let isSubmitting = false;
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
-
+            FacebookInitiateCheckEvent(getProductJsonForEventSend(), getTotalAmount());
             if (isSubmitting) return;
-
             if (!PRODUCT.loaded || !PRODUCT.id) {
                 alert("Product load হয়নি");
                 return;
@@ -205,6 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (data.success) {
                     closeModal();
+                    FacebookPurchaseEvent(getProductJsonForEventSend(), getTotalAmount());
                     document.getElementById("successPopup").classList.remove("hidden");
 
                     let count = 5;

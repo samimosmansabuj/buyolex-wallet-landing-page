@@ -1,0 +1,112 @@
+/* =========================
+  PREMIUM LOADING / ERROR SCREEN
+========================= */
+.product-error {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: radial-gradient(circle at top, #fff7f0, #f7f1eb 60%, #efe3d8);
+
+    z-index: 999999;
+
+    text-align: center;
+
+    animation: fadeIn .4s ease;
+}
+
+/* box */
+.error-box {
+    padding: 40px 30px;
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+
+    max-width: 320px;
+    width: 90%;
+
+    animation: float 2.5s ease-in-out infinite;
+}
+
+/* main title */
+.error-box h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #2B1D16;
+    margin-top: 18px;
+}
+
+/* subtitle */
+.error-box p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #5B4B43;
+    font-weight: 500;
+}
+
+/* extra small text */
+.sub-text {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #8a6f61;
+}
+
+/* =========================
+   SPINNER (premium ring)
+========================= */
+.spinner-ring {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #7A5230, #D9A441, #7A5230);
+
+    -webkit-mask:
+        radial-gradient(farthest-side, transparent calc(100% - 8px), black 0);
+
+    mask:
+        radial-gradient(farthest-side, transparent calc(100% - 8px), black 0);
+
+    animation: spin 1s linear infinite;
+
+    margin: auto;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
