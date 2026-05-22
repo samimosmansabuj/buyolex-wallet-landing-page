@@ -166,10 +166,10 @@ async function loadProductByCode() {
             `;
         }
 
-        const heroImg = document.querySelector(".hero-img");
-        if (heroImg && product.images?.length) {
-            heroImg.src = product.images[0];
-        }
+        // const heroImg = document.querySelector(".hero-img");
+        // if (heroImg && product.images?.length) {
+        //     heroImg.src = product.images[0];
+        // }
 
         document.title = product.title + " | Buyolex";
 
