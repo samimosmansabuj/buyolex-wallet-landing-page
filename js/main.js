@@ -36,25 +36,25 @@ function closeModal() {
 }
 
 // ================= DISTRICT LOAD =================
-function loadDistricts() {
-    const districtSelect = document.getElementById("city");
-    districtSelect.innerHTML = `<option value="">জেলা সিলেক্ট করুন</option>`;
-    fetch("https://bdapi.vercel.app/api/v.1/district")
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === 200 && data.success) {
-                data.data.forEach(district => {
-                    const option = document.createElement("option");
+// function loadDistricts() {
+//     const districtSelect = document.getElementById("city");
+//     districtSelect.innerHTML = `<option value="">জেলা সিলেক্ট করুন</option>`;
+//     fetch("https://bdapi.vercel.app/api/v.1/district")
+//         .then(res => res.json())
+//         .then(data => {
+//             if (data.status === 200 && data.success) {
+//                 data.data.forEach(district => {
+//                     const option = document.createElement("option");
 
-                    // 🔥 safer value
-                    option.value = district.name.toLowerCase().replace(" district", "").trim();
+//                     // 🔥 safer value
+//                     option.value = district.name.toLowerCase().replace(" district", "").trim();
 
-                    option.textContent = district.bn_name;
-                    districtSelect.appendChild(option);
-                });
-            }
-        });
-}
+//                     option.textContent = district.bn_name;
+//                     districtSelect.appendChild(option);
+//                 });
+//             }
+//         });
+// }
 
 // ================= DELIVERY =================
 function getDeliveryCharge(district) {
@@ -211,7 +211,7 @@ function getProductJsonForEventSend(){
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    loadDistricts();
+    // loadDistricts();
     loadProductByCode();
 
     const citySelect = document.getElementById("city");
